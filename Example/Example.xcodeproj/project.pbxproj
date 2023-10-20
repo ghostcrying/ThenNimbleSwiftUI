@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06912F422AE130B600CD8961 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06912F412AE130B600CD8961 /* Refreshable.swift */; };
+		06912F442AE130E600CD8961 /* RefreshPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06912F432AE130E600CD8961 /* RefreshPosition.swift */; };
+		06912F462AE1319300CD8961 /* RefreshIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06912F452AE1319300CD8961 /* RefreshIndicator.swift */; };
+		06912F482AE1324500CD8961 /* RefreshableCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06912F472AE1324500CD8961 /* RefreshableCompat.swift */; };
 		9E45C9F72A80C6D7001CD9CE /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9F62A80C6D7001CD9CE /* ExampleApp.swift */; };
 		9E45C9F92A80C6D7001CD9CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9F82A80C6D7001CD9CE /* ContentView.swift */; };
 		9E45C9FB2A80C6D8001CD9CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E45C9FA2A80C6D8001CD9CE /* Assets.xcassets */; };
@@ -29,7 +33,6 @@
 		9E45CA532A80DB57001CD9CE /* Popups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA4A2A80DB57001CD9CE /* Popups.swift */; };
 		9E45CA542A80DB57001CD9CE /* PopupExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA4B2A80DB57001CD9CE /* PopupExample.swift */; };
 		9E45CA572A80DB87001CD9CE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA562A80DB87001CD9CE /* Utils.swift */; };
-		9E45CA7E2A80DFAB001CD9CE /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 9E45CA7D2A80DFAB001CD9CE /* Introspect */; };
 		9E45CA822A80E1B5001CD9CE /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA812A80E1B5001CD9CE /* Color++.swift */; };
 		9E45CA842A80E1B9001CD9CE /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA832A80E1B9001CD9CE /* View++.swift */; };
 		9E45CA862A80E248001CD9CE /* ButtonStyle++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA852A80E248001CD9CE /* ButtonStyle++.swift */; };
@@ -78,6 +81,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06912F412AE130B600CD8961 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
+		06912F432AE130E600CD8961 /* RefreshPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPosition.swift; sourceTree = "<group>"; };
+		06912F452AE1319300CD8961 /* RefreshIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshIndicator.swift; sourceTree = "<group>"; };
+		06912F472AE1324500CD8961 /* RefreshableCompat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableCompat.swift; sourceTree = "<group>"; };
 		9E45C9F32A80C6D7001CD9CE /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E45C9F62A80C6D7001CD9CE /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		9E45C9F82A80C6D7001CD9CE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,13 +137,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E45CA2D2A80CADA001CD9CE /* ThenNimbleSwiftUI.framework in Frameworks */,
-				9E45CA7E2A80DFAB001CD9CE /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06912F402AE12EB800CD8961 /* Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				06912F432AE130E600CD8961 /* RefreshPosition.swift */,
+				06912F452AE1319300CD8961 /* RefreshIndicator.swift */,
+				06912F412AE130B600CD8961 /* Refreshable.swift */,
+				06912F472AE1324500CD8961 /* RefreshableCompat.swift */,
+			);
+			path = Refresh;
+			sourceTree = "<group>";
+		};
 		9E45C9EA2A80C6D7001CD9CE = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +206,7 @@
 		9E45CA0B2A80C711001CD9CE /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				06912F402AE12EB800CD8961 /* Refresh */,
 				9E45CACB2A80ECEF001CD9CE /* ActivityIndicatorView */,
 				9E45CA0C2A80C730001CD9CE /* FloatingButton */,
 				9E45CA402A80DB57001CD9CE /* Popup */,
@@ -373,7 +391,6 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				9E45CA7D2A80DFAB001CD9CE /* Introspect */,
 			);
 			productName = Example;
 			productReference = 9E45C9F32A80C6D7001CD9CE /* Example.app */;
@@ -404,7 +421,6 @@
 			);
 			mainGroup = 9E45C9EA2A80C6D7001CD9CE;
 			packageReferences = (
-				9E45CA7C2A80DFAB001CD9CE /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = 9E45C9F42A80C6D7001CD9CE /* Products */;
 			projectDirPath = "";
@@ -455,6 +471,7 @@
 				9E45CAA12A80E296001CD9CE /* BankingService.swift in Sources */,
 				9E45CAA52A80E296001CD9CE /* BookingScreenViewModel.swift in Sources */,
 				9E45CA4E2A80DB57001CD9CE /* Images.swift in Sources */,
+				06912F462AE1319300CD8961 /* RefreshIndicator.swift in Sources */,
 				9E45CAAC2A80E296001CD9CE /* TabScalingHeader.swift in Sources */,
 				9E45CA512A80DB57001CD9CE /* ActionSheets.swift in Sources */,
 				9E45CA9D2A80E296001CD9CE /* MapScalingHeader.swift in Sources */,
@@ -467,12 +484,15 @@
 				9E45C9F92A80C6D7001CD9CE /* ContentView.swift in Sources */,
 				9E45CAA32A80E296001CD9CE /* BookingScreenHelper.swift in Sources */,
 				9E45CAA62A80E296001CD9CE /* BookingModel.swift in Sources */,
+				06912F422AE130B600CD8961 /* Refreshable.swift in Sources */,
 				9E45CA502A80DB57001CD9CE /* FloatsSmall.swift in Sources */,
 				9E45CA2B2A80CA91001CD9CE /* ProgressExample.swift in Sources */,
 				9E45CA862A80E248001CD9CE /* ButtonStyle++.swift in Sources */,
 				9E45CA4D2A80DB57001CD9CE /* PopupButton.swift in Sources */,
 				9E45CAAB2A80E296001CD9CE /* ColorScalingHeader.swift in Sources */,
+				06912F442AE130E600CD8961 /* RefreshPosition.swift in Sources */,
 				9E45CA842A80E1B9001CD9CE /* View++.swift in Sources */,
+				06912F482AE1324500CD8961 /* RefreshableCompat.swift in Sources */,
 				9E45CAAA2A80E296001CD9CE /* ProfileHelpers.swift in Sources */,
 				9E45CA0E2A80C745001CD9CE /* FloatingButtonExample.swift in Sources */,
 				9E45CAA82A80E296001CD9CE /* ProfileScreen.swift in Sources */,
@@ -696,25 +716,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		9E45CA7C2A80DFAB001CD9CE /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/swiftui-introspect";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.10.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9E45CA7D2A80DFAB001CD9CE /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9E45CA7C2A80DFAB001CD9CE /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = Introspect;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E45C9EB2A80C6D7001CD9CE /* Project object */;
 }

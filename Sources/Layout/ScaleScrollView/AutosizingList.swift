@@ -24,14 +24,14 @@ public struct AutosizingList<Content: View>: View {
         List {
             content
         }        
-        .introspectTableView { tableView in
+        .introspect(.list, on: .iOS(.v13, .v14, .v15), customize: { tableView in
             tableView.backgroundColor = .clear
             tableView.isScrollEnabled = false
             tableContentHeight = tableView.contentSize.height
             observation = tableView.observe(\.contentSize) { tableView, value in
                 tableContentHeight = tableView.contentSize.height
             }
-        }
+        })
         .frame(height: tableContentHeight)
     }
     

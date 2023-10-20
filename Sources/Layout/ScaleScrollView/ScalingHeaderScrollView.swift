@@ -156,9 +156,9 @@ public struct ScalingHeaderScrollView<Header: View, Content: View>: View {
                 .frame(height: maxHeight)
                 .offset(y: -(contentFrame.startingRect?.maxY ?? UIScreen.main.bounds.height))
             }
-            .introspectScrollView { scrollView in
-                configure(scrollView: scrollView)
-            }
+            .introspect(.scrollView, on: .iOS(.v13, .v14, .v15, .v16, .v17), customize: {
+                configure(scrollView: $0)
+            })
             .onAppear {
                 snapInitialScrollPosition()
             }

@@ -28,7 +28,7 @@ public struct ActivityIndicatorView: View {
         case ballZigZagDeflect(_ duration: Double = 0.25)
         case circlePendulum(_ duration: Double = 1)
         case equalizer(count: Int = 5)
-        case growingArc(Color = .black, lineWidth: CGFloat = 4)
+        case growingArc(lineWidth: CGFloat = 4)
         case gradient(_ colors: [Color], CGLineCap = .butt, lineWidth: CGFloat = 4)
         case pacman(_ duration: Double = 0.5)
         case orbit(_ duration: Double = 2.0)
@@ -104,8 +104,8 @@ public struct ActivityIndicatorView: View {
                 
             case .equalizer(let count):
                 EqualizerIndicatorView(count: count)
-            case .growingArc(let color, let lineWidth):
-                GrowingArcIndicatorView(color: color, lineWidth: lineWidth)
+            case .growingArc(let lineWidth):
+                GrowingArcIndicatorView(lineWidth: lineWidth)
             case .gradient(let colors, let lineCap, let lineWidth):
                 GradientIndicatorView(colors: colors, lineCap: lineCap, lineWidth: lineWidth)
             case .newtonCradle(let duration):

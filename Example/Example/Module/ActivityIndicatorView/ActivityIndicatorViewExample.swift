@@ -14,12 +14,11 @@ struct ActivityIndicatorViewExample: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let size = geometry.size.width / 5
+            let size = geometry.size.width / 4
             let spacing: CGFloat = 40.0
             
             ScrollView {
-                HStack {
-                    
+                HStack(spacing: geometry.size.width / 5) {
                     VStack(spacing: spacing) {
                         ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .default())
                             .frame(width: size, height: size)
@@ -53,8 +52,6 @@ struct ActivityIndicatorViewExample: View {
                             .foregroundColor(.red)
                     }
                     
-                    Spacer()
-                    
                     VStack(spacing: spacing) {
                         ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .ballScaleMultiple())
                             .frame(width: size, height: size)
@@ -84,12 +81,12 @@ struct ActivityIndicatorViewExample: View {
                             .frame(width: size, height: size)
                             .foregroundColor(.red)
                         ActivityIndicatorView(isVisible: $showLoadingIndicator, type: .growingArc())
-                            .frame(width: size, height: size)
                             .foregroundColor(.red)
+                            .frame(width: size, height: size)
                     }
-                    Spacer()
                 }
             }
+            .frame(width: geometry.size.width)
         }
     }
 }

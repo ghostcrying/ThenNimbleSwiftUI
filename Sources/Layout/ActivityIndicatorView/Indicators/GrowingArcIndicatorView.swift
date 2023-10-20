@@ -8,60 +8,63 @@
 
 import SwiftUI
 
+// MARK: - GrowingArcIndicatorViewExample_Previews
+
 struct GrowingArcIndicatorViewExample_Previews: PreviewProvider {
     static var previews: some View {
-        GrowingArcIndicatorView(color: .black, lineWidth: 10)
+        GrowingArcIndicatorView(lineWidth: 10)
+            .foregroundColor(.red)
             .frame(width: 100, height: 100)
     }
 }
 
-struct GrowingArcIndicatorView: View {
+// MARK: - GrowingArcIndicatorView
 
-    let color: Color
+struct GrowingArcIndicatorView: View {
     let lineWidth: CGFloat
-    
+
     @State private var animatableParameter: Double = 0
 
     public var body: some View {
         let animation = Animation
             .easeIn(duration: 2)
             .repeatForever(autoreverses: false)
-        
-        return GrowingArc(p: animatableParameter)
-            .stroke(color, lineWidth: lineWidth)
+
+        return GrowingArc(p: self.animatableParameter)
+            .stroke(lineWidth: lineWidth)
             .onAppear {
-                animatableParameter = 0
+                self.animatableParameter = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                     withAnimation(animation) {
-                        animatableParameter = 1
+                        self.animatableParameter = 1
                     }
                 }
             }
     }
 }
 
-struct GrowingArc: Shape {
+// MARK: - GrowingArc
 
+struct GrowingArc: Shape {
     var maxLength = 2 * Double.pi - 0.7
     var lag = 0.35
     var p: Double
 
     var animatableData: Double {
-        get { return p }
-        set { p = newValue }
+        get { return self.p }
+        set { self.p = newValue }
     }
 
     func path(in rect: CGRect) -> Path {
-
         let h = p * 2
-        var length = h * maxLength
-        if h > 1 && h < lag + 1 {
-            length = maxLength
+        var length = h * self.maxLength
+        if h > 1 && h < self.lag + 1 {
+            length = self.maxLength
         }
-        if h > lag + 1 {
-            let coeff = 1 / (1 - lag)
-            let n = h - 1 - lag
-            length = (1 - n * coeff) * maxLength
+        if h > self.lag + 1 {
+            let coeff = 1 / (1 - self.lag)
+            let n = h - 1 - self.lag
+            length = (1 - n * coeff) * self.maxLength
         }
 
         let first = Double.pi / 2
@@ -75,11 +78,13 @@ struct GrowingArc: Shape {
         let start = end + length
 
         var p = Path()
-        p.addArc(center: CGPoint(x: rect.size.width/2, y: rect.size.width/2),
-                 radius: rect.size.width/2,
-                 startAngle: Angle(radians: start),
-                 endAngle: Angle(radians: end),
-                 clockwise: true)
+        p.addArc(
+            center: CGPoint(x: rect.size.width / 2, y: rect.size.width / 2),
+            radius: rect.size.width / 2,
+            startAngle: Angle(radians: start),
+            endAngle: Angle(radians: end),
+            clockwise: true
+        )
         return p
     }
 }

@@ -228,35 +228,6 @@ extension FloatingButton {
 
 extension FloatingButton {
     
-    struct SubMenuButton<ButtonView: View>: View {
-        var button: ButtonView
-        var action: () -> () = { }
-        
-        var body: some View {
-            Button {
-                action()
-            } label: {
-                button
-            }
-            .buttonStyle(.plain)
-        }
-    }
-
-    struct MainButtonViewInternal<MainView: View>: View {
-        
-        @Binding public var isOpen: Bool
-        
-        var mainView: MainView
-        
-        var body: some View {
-            Button {
-                isOpen.toggle()
-            } label: {
-                mainView
-            }
-        }
-    }
-    
     struct SubmenuButtonPreferenceViewSetter: View {
 
         var body: some View {
@@ -269,5 +240,34 @@ extension FloatingButton {
         }
     }
 
+}
+
+struct SubMenuButton<ButtonView: View>: View {
+    var button: ButtonView
+    var action: () -> () = { }
+    
+    var body: some View {
+        Button {
+            action()
+        } label: {
+            button
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+struct MainButtonViewInternal<MainView: View>: View {
+    
+    @Binding public var isOpen: Bool
+    
+    var mainView: MainView
+    
+    var body: some View {
+        Button {
+            isOpen.toggle()
+        } label: {
+            mainView
+        }
+    }
 }
 

@@ -9,7 +9,7 @@
 import SwiftUI
 #if os(iOS)
 import ThenNimbleSwiftUI
-import Introspect
+import SwiftUIIntrospect
 #if canImport(UIKit)
 import UIKit
 #endif
