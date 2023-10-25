@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ThenNimbleSwiftUI
 
 /// Callback that'll trigger once refreshing is done
 public typealias RefreshComplete = () -> Void
@@ -18,7 +17,7 @@ public typealias OnRefresh = (@escaping RefreshComplete) -> Void
 
 /// The offset threshold. 68 is a good number, but you can play
 /// with it to your liking.
-public let defaultRefreshThreshold: CGFloat = 44
+public let defaultRefreshThreshold: CGFloat = 60
 
 // MARK: - RefreshState
 
@@ -30,6 +29,15 @@ public enum RefreshState {
     case waiting
     case primed
     case loading
+    
+    var loadingSize: CGSize {
+        switch self {
+        case .waiting:
+            return .init()
+        default:
+            return .init(width: 25, height: 25)
+        }
+    }
 }
 
 /// ViewBuilder for the custom progress View, that may render itself
@@ -76,6 +84,17 @@ public struct RefreshableScrollView<Progress, Content>: View where Progress: Vie
         self.content = content
     }
 
+    var indicatorOffset: Double {
+        switch state {
+        case .waiting:
+            return -self.threshold
+        case .primed:
+            return -self.offset
+        case .loading:
+            return -max(self.offset, 0)
+        }
+    }
+    
     public var body: some View {
         // The root view is a regular ScrollView
         ScrollView(showsIndicators: self.showsIndicators) {
@@ -91,7 +110,9 @@ public struct RefreshableScrollView<Progress, Content>: View where Progress: Vie
                 // to keep it below the loading view, hence the alignmentGuide.
                 self.content()
                     .alignmentGuide(.top, computeValue: { _ in
-                        (self.state == .loading) ? (max(0, self.offset) - self.threshold) : 0
+                        (self.state == .loading) 
+                        ? -self.threshold
+                            : 0
                     })
 
                 // The loading view. It's offset to the top of the content unless we're loading.
@@ -101,11 +122,7 @@ public struct RefreshableScrollView<Progress, Content>: View where Progress: Vie
                         .frame(height: self.threshold)
                     self.progress(self.state, self.offset)
                 }
-                .offset(y: (self.state == .loading)
-                        ? -max(0, self.offset)
-                        : (self.state == .primed 
-                           ? -self.offset
-                           : -self.threshold))
+                .offset(y: indicatorOffset)
             }
         }
         // Put a fixed PositionIndicator in the background so that we have
@@ -121,37 +138,39 @@ public struct RefreshableScrollView<Progress, Content>: View where Progress: Vie
                 self.offset = movingY - fixedY
                 if self.state != .loading { // If we're already loading, ignore everything
                     // Map the preference change action to the UI thread
-
                     // If the user pulled down below the threshold, prime the view
-                    if self.offset > self.threshold && self.state == .waiting {
-                        self.state = .primed
-                        if self.shouldTriggerHapticFeedback {
-                            self.primedFeedbackGenerator.impactOccurred()
-                        }
-
-                        // If the view is primed and we've crossed the threshold again on the
-                        // way back, trigger the refresh
-                    } else if self.offset < self.threshold && self.state == .primed {
-                        self.state = .loading
-                        self.onRefresh { // trigger the refreshing callback
-                            // once refreshing is done, smoothly move the loading view
-                            // back to the offset position
-                            withAnimation {
-                                self.state = .waiting
-                            }
+                    switch self.offset {
+                    case self.threshold..<(self.threshold*2):
+                        if self.state == .waiting {
+                            self.state = .primed
                             if self.shouldTriggerHapticFeedback {
-                                self.finishedReloadingFeedbackGenerator.impactOccurred()
+                                self.primedFeedbackGenerator.impactOccurred()
                             }
                         }
+                    case (self.threshold*2)...:
+                        if self.state == .primed {
+                            self.state = .loading
+                            self.onRefresh { // trigger the refreshing callback
+                                // once refreshing is done, smoothly move the loading view
+                                // back to the offset position
+                                withAnimation {
+                                    self.state = .waiting
+                                }
+                                if self.shouldTriggerHapticFeedback {
+                                    self.finishedReloadingFeedbackGenerator.impactOccurred()
+                                }
+                            }
+                        }
+                    default:
+                        break
                     }
                 }
+                print("偏移: \(self.state) \(self.offset) \(self.threshold)")
             }
         }
     }
 }
 
-/// Extension that uses default RefreshActivityIndicator so that you don't have to
-/// specify it every time.
 public extension RefreshableScrollView where Progress == RefreshActivityIndicator {
     init(
         showsIndicators: Bool = true,
@@ -160,40 +179,28 @@ public extension RefreshableScrollView where Progress == RefreshActivityIndicato
         onRefresh: @escaping OnRefresh,
         @ViewBuilder content: @escaping () -> Content
     ) {
-        func dealAlpha(state: RefreshState, offset: CGFloat, threshold: CGFloat) -> CGFloat {
-            let alpha: CGFloat
-            switch state {
-            case .loading:
-                alpha = 1
-            case .waiting:
-                alpha = 0
-            default:
-                //
-                if offset < threshold {
-                    alpha = 0
+        func scrollPace(_ offset: CGFloat, _ threshold: CGFloat) -> CGFloat {
+            let pace: CGFloat
+            if offset < threshold {
+                pace = 0
+            } else {
+                if offset - threshold < threshold {
+                    pace = (offset - threshold) / threshold
                 } else {
-                    if offset - threshold < threshold {
-                        alpha = (offset - threshold) / threshold
-                    } else {
-                        alpha = 1
-                    }
+                    pace = 1
                 }
-                print("当前\(state) \(offset) \(threshold) 透明度: \(alpha)")
             }
-            return alpha
+            // print("当前\(offset) \(threshold) 百分比: \(pace)")
+            return pace
         }
+        
         self.init(
             showsIndicators: showsIndicators,
             loadingViewBackgroundColor: loadingViewBackgroundColor,
             threshold: threshold,
             onRefresh: onRefresh,
             progress: { state, offset in
-                RefreshActivityIndicator(
-                    isAnimating: state == .loading,
-                    alpha: dealAlpha(state: state, offset: offset, threshold: threshold)
-                ) { _ in
-                    // $0.hidesWhenStopped = true
-                }
+                RefreshActivityIndicator(state: state, progress: state == .primed ? scrollPace(offset, threshold) : 1)
             },
             content: content
         )
@@ -235,25 +242,29 @@ struct Refreshable_View: View {
     @State private var now = Date()
 
     var body: some View {
-        RefreshableScrollView(
-            onRefresh: { done in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.now = Date()
-                    done()
-                }
-            }) {
-                VStack {
-                    ForEach(1 ..< 5) { _ in
-                        NavigationLink {
-                            Text("++")
-                        } label: {
-                            Text("++").padding(.bottom, 10)
+        VStack {
+            Text("🌲")
+                .frame(height: 100)
+            Divider()
+                .frame(height: 1)
+            RefreshableScrollView(
+                onRefresh: { done in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+                        self.now = Date()
+                        done()
+                    }
+                }) {
+                    VStack {
+                        ForEach(1 ..< 5) { _ in
+                            NavigationLink {
+                                Text("++")
+                            } label: {
+                                Text("++").padding(.bottom, 10)
+                            }
                         }
-                        // Text("\(Calendar.current.date(byAdding: .hour, value: $0, to: self.now)!)")
                     }
                 }
-                .padding()
-            }
+        }
     }
 }
 
@@ -297,16 +308,10 @@ struct RefreshableCustomProgress_View: View {
                 }
             },
             progress: { state, offset in
-//                if state == .waiting {
-//                    Text("Pull me down...")
-//                } else if state == .primed {
-//                    Text("Now release!")
-//                } else {
-//                    Text("Working...")
-//                }
                 if state != .waiting {
                     ActivityIndicatorView(isVisible: .constant(true), type: .growingArc(lineWidth: 2))
-                        .frame(width: 40, height: 40)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.red)
                 }
                 EmptyView()
             }
@@ -355,9 +360,7 @@ struct RefreshableWithCustomProgress_Previews: PreviewProvider {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
                 self.now = Date()
             }, progress: { state, offset in
-                RefreshActivityIndicator(isAnimating: state == .loading, alpha: 1) {
-                    $0.hidesWhenStopped = false
-                }
+                RefreshActivityIndicator(state: state, progress: 1)
             }) {
                 VStack {
                     ForEach(1 ..< 20) {

@@ -116,9 +116,9 @@ struct RefreshableCompat_View: View {
                 }
             },
             progress: { state, offset in
-                RefreshActivityIndicator(isAnimating: state == .loading, alpha: 1) {
-                    $0.hidesWhenStopped = false
-                }
+                ActivityIndicatorView(isVisible: .constant(true), type: .default())
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.red)
             }
         )
     }

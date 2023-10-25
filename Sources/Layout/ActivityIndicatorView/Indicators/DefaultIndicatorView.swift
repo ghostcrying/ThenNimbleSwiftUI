@@ -2,10 +2,10 @@ import SwiftUI
 
 struct DefaultIndicatorViewExample_Previews: PreviewProvider {
     static var previews: some View {
-        DefaultIndicatorView(count: 7)
+        DefaultIndicatorView(count: 8)
             .frame(width: 100, height: 100)
         
-        DefaultIndicatorItemView(index: 0, count: 8, size: CGSize(width: 100, height: 100))
+        // DefaultIndicatorItemView(index: 0, count: 8, size: CGSize(width: 100, height: 100))
     }
 }
 
