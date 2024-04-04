@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0676DE102BA58B8F008CF49D /* Modifier+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676DE0F2BA58B8F008CF49D /* Modifier+Transform.swift */; };
 		06912F3D2AE1254B00CD8961 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 06912F3C2AE1254B00CD8961 /* SwiftUIIntrospect */; };
 		06DB34222AE8FA330058BA13 /* RefreshIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB341E2AE8FA330058BA13 /* RefreshIndicators.swift */; };
 		06DB34232AE8FA330058BA13 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB341F2AE8FA330058BA13 /* Refreshable.swift */; };
@@ -23,8 +24,8 @@
 		9E2ADBC72A8373FA003653BE /* BallPulseSyncIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2ADBC62A8373FA003653BE /* BallPulseSyncIndicatorView.swift */; };
 		9E45C9D82A80C24D001CD9CE /* ThenNimbleSwiftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E45C9D72A80C24D001CD9CE /* ThenNimbleSwiftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9E45C9E22A80C293001CD9CE /* Color++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9E12A80C293001CD9CE /* Color++.swift */; };
-		9E45C9E72A80C2EE001CD9CE /* SizePreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9E62A80C2EE001CD9CE /* SizePreferenceKey.swift */; };
-		9E45C9E92A80C5E0001CD9CE /* SizeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9E82A80C5E0001CD9CE /* SizeModifier.swift */; };
+		9E45C9E72A80C2EE001CD9CE /* PreferenceKey+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9E62A80C2EE001CD9CE /* PreferenceKey+Size.swift */; };
+		9E45C9E92A80C5E0001CD9CE /* Modifier+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45C9E82A80C5E0001CD9CE /* Modifier+Size.swift */; };
 		9E45CA112A80C78A001CD9CE /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA102A80C78A001CD9CE /* FloatingButton.swift */; };
 		9E45CA152A80C7F2001CD9CE /* Collection++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA142A80C7F2001CD9CE /* Collection++.swift */; };
 		9E45CA172A80C828001CD9CE /* FloatingButtonGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA162A80C828001CD9CE /* FloatingButtonGeneric.swift */; };
@@ -35,10 +36,10 @@
 		9E45CA242A80CA28001CD9CE /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA1F2A80CA28001CD9CE /* BarView.swift */; };
 		9E45CA252A80CA28001CD9CE /* ImpulseBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA202A80CA28001CD9CE /* ImpulseBarView.swift */; };
 		9E45CA282A80CA5A001CD9CE /* ProgressIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA272A80CA5A001CD9CE /* ProgressIndicatorView.swift */; };
-		9E45CA312A80CB06001CD9CE /* CircleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA302A80CB06001CD9CE /* CircleModifier.swift */; };
+		9E45CA312A80CB06001CD9CE /* Modifier+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA302A80CB06001CD9CE /* Modifier+Circle.swift */; };
 		9E45CA332A80CE39001CD9CE /* Diagonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA322A80CE39001CD9CE /* Diagonal.swift */; };
-		9E45CA5A2A80DC80001CD9CE /* FrameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA582A80DC80001CD9CE /* FrameModifier.swift */; };
-		9E45CA5B2A80DC80001CD9CE /* SafeAreaModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA592A80DC80001CD9CE /* SafeAreaModifier.swift */; };
+		9E45CA5A2A80DC80001CD9CE /* Modifier+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA582A80DC80001CD9CE /* Modifier+Frame.swift */; };
+		9E45CA5B2A80DC80001CD9CE /* Modifier+SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA592A80DC80001CD9CE /* Modifier+SafeArea.swift */; };
 		9E45CA5D2A80DC86001CD9CE /* View++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA5C2A80DC86001CD9CE /* View++.swift */; };
 		9E45CA612A80DCA5001CD9CE /* DispatchWorkHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA5E2A80DCA5001CD9CE /* DispatchWorkHolder.swift */; };
 		9E45CA622A80DCA5001CD9CE /* Constrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E45CA5F2A80DCA5001CD9CE /* Constrant.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0676DE0F2BA58B8F008CF49D /* Modifier+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Transform.swift"; sourceTree = "<group>"; };
 		06DB341E2AE8FA330058BA13 /* RefreshIndicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshIndicators.swift; sourceTree = "<group>"; };
 		06DB341F2AE8FA330058BA13 /* Refreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		06DB34202AE8FA330058BA13 /* RefreshableCompat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableCompat.swift; sourceTree = "<group>"; };
@@ -93,8 +95,8 @@
 		9E45C9D42A80C24D001CD9CE /* ThenNimbleSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ThenNimbleSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E45C9D72A80C24D001CD9CE /* ThenNimbleSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThenNimbleSwiftUI.h; sourceTree = "<group>"; };
 		9E45C9E12A80C293001CD9CE /* Color++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color++.swift"; sourceTree = "<group>"; };
-		9E45C9E62A80C2EE001CD9CE /* SizePreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizePreferenceKey.swift; sourceTree = "<group>"; };
-		9E45C9E82A80C5E0001CD9CE /* SizeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeModifier.swift; sourceTree = "<group>"; };
+		9E45C9E62A80C2EE001CD9CE /* PreferenceKey+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferenceKey+Size.swift"; sourceTree = "<group>"; };
+		9E45C9E82A80C5E0001CD9CE /* Modifier+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Size.swift"; sourceTree = "<group>"; };
 		9E45CA102A80C78A001CD9CE /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		9E45CA142A80C7F2001CD9CE /* Collection++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection++.swift"; sourceTree = "<group>"; };
 		9E45CA162A80C828001CD9CE /* FloatingButtonGeneric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonGeneric.swift; sourceTree = "<group>"; };
@@ -105,10 +107,10 @@
 		9E45CA1F2A80CA28001CD9CE /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		9E45CA202A80CA28001CD9CE /* ImpulseBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImpulseBarView.swift; sourceTree = "<group>"; };
 		9E45CA272A80CA5A001CD9CE /* ProgressIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorView.swift; sourceTree = "<group>"; };
-		9E45CA302A80CB06001CD9CE /* CircleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleModifier.swift; sourceTree = "<group>"; };
+		9E45CA302A80CB06001CD9CE /* Modifier+Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Modifier+Circle.swift"; sourceTree = "<group>"; };
 		9E45CA322A80CE39001CD9CE /* Diagonal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagonal.swift; sourceTree = "<group>"; };
-		9E45CA582A80DC80001CD9CE /* FrameModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameModifier.swift; sourceTree = "<group>"; };
-		9E45CA592A80DC80001CD9CE /* SafeAreaModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaModifier.swift; sourceTree = "<group>"; };
+		9E45CA582A80DC80001CD9CE /* Modifier+Frame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Modifier+Frame.swift"; sourceTree = "<group>"; };
+		9E45CA592A80DC80001CD9CE /* Modifier+SafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Modifier+SafeArea.swift"; sourceTree = "<group>"; };
 		9E45CA5C2A80DC86001CD9CE /* View++.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View++.swift"; sourceTree = "<group>"; };
 		9E45CA5E2A80DCA5001CD9CE /* DispatchWorkHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchWorkHolder.swift; sourceTree = "<group>"; };
 		9E45CA5F2A80DCA5001CD9CE /* Constrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrant.swift; sourceTree = "<group>"; };
@@ -201,10 +203,11 @@
 		9E45C9DF2A80C272001CD9CE /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
-				9E45C9E82A80C5E0001CD9CE /* SizeModifier.swift */,
-				9E45CA302A80CB06001CD9CE /* CircleModifier.swift */,
-				9E45CA582A80DC80001CD9CE /* FrameModifier.swift */,
-				9E45CA592A80DC80001CD9CE /* SafeAreaModifier.swift */,
+				9E45C9E82A80C5E0001CD9CE /* Modifier+Size.swift */,
+				9E45CA302A80CB06001CD9CE /* Modifier+Circle.swift */,
+				9E45CA582A80DC80001CD9CE /* Modifier+Frame.swift */,
+				9E45CA592A80DC80001CD9CE /* Modifier+SafeArea.swift */,
+				0676DE0F2BA58B8F008CF49D /* Modifier+Transform.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -247,7 +250,7 @@
 		9E45C9E52A80C2B7001CD9CE /* PreferenceKey */ = {
 			isa = PBXGroup;
 			children = (
-				9E45C9E62A80C2EE001CD9CE /* SizePreferenceKey.swift */,
+				9E45C9E62A80C2EE001CD9CE /* PreferenceKey+Size.swift */,
 			);
 			path = PreferenceKey;
 			sourceTree = "<group>";
@@ -473,7 +476,7 @@
 				9E45CA332A80CE39001CD9CE /* Diagonal.swift in Sources */,
 				9E6E3C212A84C03F00B74C8A /* BallZigZagDeflectIndicatorView.swift in Sources */,
 				9E45CA6E2A80DCD8001CD9CE /* KeyboardObserver.swift in Sources */,
-				9E45CA5B2A80DC80001CD9CE /* SafeAreaModifier.swift in Sources */,
+				9E45CA5B2A80DC80001CD9CE /* Modifier+SafeArea.swift in Sources */,
 				06DB34222AE8FA330058BA13 /* RefreshIndicators.swift in Sources */,
 				9E2ADBBD2A835CCE003653BE /* BallClipRotatePulseIndicatorView.swift in Sources */,
 				9E45CAC62A80EC3E001CD9CE /* BallRotateChaseIndicatorView.swift in Sources */,
@@ -486,18 +489,19 @@
 				9E45C9E22A80C293001CD9CE /* Color++.swift in Sources */,
 				9E45CAD12A8203DC001CD9CE /* CirclePendulumIndicatorView.swift in Sources */,
 				9E45CA232A80CA28001CD9CE /* CircleView.swift in Sources */,
-				9E45C9E72A80C2EE001CD9CE /* SizePreferenceKey.swift in Sources */,
+				9E45C9E72A80C2EE001CD9CE /* PreferenceKey+Size.swift in Sources */,
 				9E6E3C1B2A8485E000B74C8A /* BallScaleRippleMultipleIndicatorView.swift in Sources */,
 				9E2ADBB72A83223D003653BE /* OrbitIndicatorView.swift in Sources */,
-				9E45CA312A80CB06001CD9CE /* CircleModifier.swift in Sources */,
-				9E45C9E92A80C5E0001CD9CE /* SizeModifier.swift in Sources */,
+				9E45CA312A80CB06001CD9CE /* Modifier+Circle.swift in Sources */,
+				9E45C9E92A80C5E0001CD9CE /* Modifier+Size.swift in Sources */,
 				9E45CA5D2A80DC86001CD9CE /* View++.swift in Sources */,
 				9E45CAC02A80EC3E001CD9CE /* BallPulseIndicatorView.swift in Sources */,
 				9E2ADBC12A83636D003653BE /* BallGridPulseIndicatorView.swift in Sources */,
 				9E45CAC82A80EC3E001CD9CE /* BallScaleIndicatorView.swift in Sources */,
-				9E45CA5A2A80DC80001CD9CE /* FrameModifier.swift in Sources */,
+				9E45CA5A2A80DC80001CD9CE /* Modifier+Frame.swift in Sources */,
 				9E45CA252A80CA28001CD9CE /* ImpulseBarView.swift in Sources */,
 				9E45CAC72A80EC3E001CD9CE /* GrowingArcIndicatorView.swift in Sources */,
+				0676DE102BA58B8F008CF49D /* Modifier+Transform.swift in Sources */,
 				9E45CAC52A80EC3E001CD9CE /* GradientIndicatorView.swift in Sources */,
 				9E45CA782A80DED9001CD9CE /* ScalingHeaderScrollViewDelegate.swift in Sources */,
 				9E6E3C1F2A84B9A400B74C8A /* BallZigZagIndicatorView.swift in Sources */,
