@@ -96,3 +96,4 @@ struct ActivityIndicatorViewExample_Previews: PreviewProvider {
         ActivityIndicatorViewExample()
     }
 }
+

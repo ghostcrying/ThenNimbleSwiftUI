@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0614880E2D5364C000A431CE /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 0614880D2D5364C000A431CE /* SwiftUIIntrospect */; };
 		0676DE102BA58B8F008CF49D /* Modifier+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676DE0F2BA58B8F008CF49D /* Modifier+Transform.swift */; };
-		06912F3D2AE1254B00CD8961 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 06912F3C2AE1254B00CD8961 /* SwiftUIIntrospect */; };
 		06DB34222AE8FA330058BA13 /* RefreshIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB341E2AE8FA330058BA13 /* RefreshIndicators.swift */; };
 		06DB34232AE8FA330058BA13 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB341F2AE8FA330058BA13 /* Refreshable.swift */; };
 		06DB34242AE8FA330058BA13 /* RefreshableCompat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DB34202AE8FA330058BA13 /* RefreshableCompat.swift */; };
@@ -153,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06912F3D2AE1254B00CD8961 /* SwiftUIIntrospect in Frameworks */,
+				0614880E2D5364C000A431CE /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +399,7 @@
 			);
 			name = ThenNimbleSwiftUI;
 			packageProductDependencies = (
-				06912F3C2AE1254B00CD8961 /* SwiftUIIntrospect */,
+				0614880D2D5364C000A431CE /* SwiftUIIntrospect */,
 			);
 			productName = ThenNimbleSwiftUI;
 			productReference = 9E45C9D42A80C24D001CD9CE /* ThenNimbleSwiftUI.framework */;
@@ -430,7 +430,7 @@
 			);
 			mainGroup = 9E45C9CA2A80C24D001CD9CE;
 			packageReferences = (
-				06912F3B2AE1254B00CD8961 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				0614880C2D5364C000A431CE /* XCLocalSwiftPackageReference "Packages/swiftui-introspect" */,
 			);
 			productRefGroup = 9E45C9D52A80C24D001CD9CE /* Products */;
 			projectDirPath = "";
@@ -740,21 +740,16 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		06912F3B2AE1254B00CD8961 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/swiftui-introspect";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		0614880C2D5364C000A431CE /* XCLocalSwiftPackageReference "Packages/swiftui-introspect" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "Packages/swiftui-introspect";
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		06912F3C2AE1254B00CD8961 /* SwiftUIIntrospect */ = {
+		0614880D2D5364C000A431CE /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 06912F3B2AE1254B00CD8961 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */

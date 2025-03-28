@@ -19,7 +19,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/siteline/swiftui-introspect", from: "0.10.0"),
+        // .package(url: "https://github.com/siteline/swiftui-introspect", from: "0.10.0"),
+        .package(path: "Packages/swiftui-introspect")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
